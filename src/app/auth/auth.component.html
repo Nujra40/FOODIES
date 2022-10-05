@@ -1,0 +1,80 @@
+<section class="vh-100" style="background-color: #ffffff;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="assets/images/home.png"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                  <form [hidden]="disableSignIn">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h1 fw-bold mb-0">Sign In</span>
+                    </div>
+  
+                    <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Into your account</h5> -->
+  
+                    <div class="form-outline mb-4">
+                      <input type="email" id="email-signin" placeholder="Email" class="form-control form-control-lg" />
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" id="password-signin" placeholder="Password" class="form-control form-control-lg" />
+                    </div>
+  
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" (click)="signIn()" type="button">Sign In</button>
+                    </div>
+  
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">New to FOODIES? <span
+                        (click)="showSignUp()"
+                        id="signUpLabel"
+                        style="color: #393f81;">Sign Up</span></p>
+                  </form>
+
+                  <form [hidden]="!disableSignIn">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h1 fw-bold mb-0">Sign Up</span>
+                    </div>
+  
+                    <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Into your account</h5> -->
+  
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email-signup" placeholder="Email" class="form-control form-control-lg" />
+                      </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" id="phone-signup" placeholder="Phone" class="form-control form-control-lg" />
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                        <input type="password" id="password-signup" placeholder="Password" class="form-control form-control-lg" />
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="password" id="c-password-signup" placeholder="Confirm Password" class="form-control form-control-lg" />
+                      </div>
+  
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" (click)="signUp()" type="button">Sign Up</button>
+                    </div>
+  
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Existing Customer? <span
+                        (click)="showSignIn()"
+                        id="signInLabel"
+                        style="color: #393f81;">Sign In</span></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
