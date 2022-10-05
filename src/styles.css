@@ -6,3 +6,14 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+#heading {
+    text-align: center;
+    padding-top: 100px;
+    letter-spacing: 10px;
+}
+
+#tag {
+    text-align: center;
+    font-size: 110%;
+}
