@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  constructor (private router: Router) {}
+
   disableSignIn: boolean = false;
   e_si: string = 'gray';
   pa_si: string = 'gray';
@@ -47,9 +50,9 @@ export class AuthComponent {
       this.pa_si = 'gray';
     }
 
-    if (valid) {
-      console.log("Sign In Success");
-    }    
+    if (!valid) return;
+    this.router.navigate(['home']);
+
   }
 
   signUp(data: any) {
@@ -96,8 +99,7 @@ export class AuthComponent {
       this.cp_su = this.pa_su = 'gray';
     }
 
-    if (valid) {
-      console.log("Sign Up Success");
-    }
+    if (!valid) return;
+    this.router.navigate(['home']);
   }
 }
