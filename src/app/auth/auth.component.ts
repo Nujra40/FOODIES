@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-interface User {
-  email: string;
-  phno: string;
-  password: string;
-}
-
-
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -17,6 +10,7 @@ export class AuthComponent {
   e_si: string = 'gray';
   pa_si: string = 'gray';
 
+  n_su: string = 'gray';
   e_su: string = 'gray';
   ph_su: string = 'gray';
   pa_su: string = 'gray';
@@ -34,8 +28,8 @@ export class AuthComponent {
   }
 
   signIn(data: any) {
-    const email = data['email-signin'].value;
-    const password = data['password-signin'].value;
+    const email = data['email-signin'];
+    const password = data['password-signin'];
 
     var valid: boolean = true;
 
@@ -54,20 +48,25 @@ export class AuthComponent {
     }
 
     if (valid) {
-      alert("Sign In Success");
-    }
-
-    console.log(email, password);
-    
+      console.log("Sign In Success");
+    }    
   }
 
   signUp(data: any) {
-    const email = data['email-signup'].value;
-    const phno = data['phone-signup'].value;
-    const password = data['password-signup'].value;
-    const cpassword = data['c-password-signup'].value;
+    const name = data['name-signup'];
+    const email = data['email-signup'];
+    const phno = data['phone-signup'];
+    const password = data['password-signup'];
+    const cpassword = data['c-password-signup'];
 
     var valid: boolean = true;
+
+    if (!name) {
+      this.n_su = 'red';
+      valid = false;
+    } else {
+      this.n_su = 'gray';
+    } 
 
     if (!/^[0-9A-Za-z._]{1,}@[0-9A-Za-z.]{1,}$/.test(email)) {
      this.e_su = 'red';
@@ -90,13 +89,6 @@ export class AuthComponent {
       this.pa_su = 'gray';
     }
 
-    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      this.cp_su = 'red';
-      valid = false;
-    } else {
-      this.cp_su = 'gray';
-    }
-
     if (!(cpassword == password)) {
       this.cp_su = this.pa_su = 'red';
       valid = false;
@@ -105,9 +97,7 @@ export class AuthComponent {
     }
 
     if (valid) {
-      alert("Sign Up Success");
+      console.log("Sign Up Success");
     }
-
-    console.log(email, password, cpassword, phno);
   }
 }

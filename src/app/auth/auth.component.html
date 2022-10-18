@@ -2,18 +2,18 @@
   <h1 id="heading">FOODIES</h1>
   <p id="tag">Choose. Order. Repeat.</p>
     <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-xl-10">
           <div style="border-radius: 1rem;">
             <div class="row g-0">
               <div class="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="assets/images/home.png"
+                <img src="assets/images/home.png" style="fill: cover"
                   alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                <div class="card-body p-4 p-lg-5 text-black">
+                <div class="card-body px-5 py-1 text-black">
   
-                  <form #signInForm [hidden]="disableSignIn">
+                  <form #signInForm="ngForm" [hidden]="disableSignIn" (ngSubmit)="signIn(signInForm.value)">
   
                     <div class="d-flex align-items-center mb-3 pb-1">
                       <span class="h1 fw-bold mb-0">Sign In</span>
@@ -22,15 +22,15 @@
                     <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Into your account</h5> -->
   
                     <div class="form-outline mb-4">
-                      <input [style.borderColor]="e_si" type="email" id="email-signin" placeholder="Email" class="form-control form-control-lg" />
+                      <input [style.borderColor]="e_si" type="email" name="email-signin" placeholder="Email" class="form-control form-control-lg" ngModel/>
                     </div>
   
                     <div class="form-outline mb-4">
-                      <input [style.borderColor]="pa_si" type="password" id="password-signin" placeholder="Password" class="form-control form-control-lg" />
+                      <input [style.borderColor]="pa_si" type="password" name="password-signin" placeholder="Password" class="form-control form-control-lg" ngModel/>
                     </div>
   
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" (click)="signIn(signInForm)" type="button">Sign In</button>
+                      <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign In">
                     </div>
   
                     <p class="mb-5 pb-lg-2" style="color: #393f81;">New to FOODIES? <span
@@ -39,32 +39,34 @@
                         style="color: #393f81;">Sign Up</span></p>
                   </form>
 
-                  <form #signUpForm [hidden]="!disableSignIn">
-  
+                  <form #signUpForm="ngForm" [hidden]="!disableSignIn" (ngSubmit)="signUp(signUpForm.value)">
                     <div class="d-flex align-items-center mb-3 pb-1">
                       <span class="h1 fw-bold mb-0">Sign Up</span>
                     </div>
   
                     <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Into your account</h5> -->
-  
                     <div class="form-outline mb-4">
-                        <input [style.borderColor]="e_su" type="email" id="email-signup" placeholder="Email" class="form-control form-control-lg" />
-                      </div>
-
-                    <div class="form-outline mb-4">
-                        <input [style.borderColor]="ph_su" type="text" id="phone-signup" placeholder="Phone" class="form-control form-control-lg" />
+                      <input [style.borderColor]="n_su" type="text" name="name-signup" placeholder="Name" class="form-control form-control-lg" ngModel/>
                     </div>
   
                     <div class="form-outline mb-4">
-                        <input [style.borderColor]="pa_su" type="password" id="password-signup" placeholder="Password" class="form-control form-control-lg" />
+                        <input [style.borderColor]="e_su" type="email" name="email-signup" placeholder="Email" class="form-control form-control-lg" ngModel/>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input [style.borderColor]="ph_su" type="text" name="phone-signup" placeholder="Phone" class="form-control form-control-lg" ngModel/>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                        <input [style.borderColor]="pa_su" type="password" name="password-signup" placeholder="Password" class="form-control form-control-lg" ngModel/>
                       </div>
 
                       <div class="form-outline mb-4">
-                        <input [style.borderColor]="cp_su" type="password" id="c-password-signup" placeholder="Confirm Password" class="form-control form-control-lg" />
+                        <input [style.borderColor]="cp_su" type="password" name="c-password-signup" placeholder="Confirm Password" class="form-control form-control-lg" ngModel/>
                       </div>
   
                     <div class="pt-1 mb-4">
-                      <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign Up" (click)="signUp(signUpForm)">
+                      <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign Up">
                     </div>
   
                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Existing Customer? <span
