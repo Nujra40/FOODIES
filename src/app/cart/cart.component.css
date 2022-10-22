@@ -1,0 +1,27 @@
+.item {
+    width: flex;
+    height: auto;
+    padding: 1em;
+    margin: 2em;
+    border: 2px solid darkgray;
+    border-radius: 15px;
+}
+
+.title{
+    padding: 3em;
+    text-align: center;
+    background-color: rgb(50, 31, 31);
+    color: white;
+    font-style: normal;
+    height: 15em;
+}
+.title h1{
+    padding-top: 0.5em;
+    font-weight: bold;
+    font-size: 3em;
+}
+.title p{
+    font-size:medium;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

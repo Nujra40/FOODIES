@@ -1,0 +1,90 @@
+.header{
+    padding: 1em;
+    font-size: larger;
+}
+.header div{
+    display:inline-block;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+#cart-button{
+    text-align: center;
+}
+#cart-button:hover{
+    background-color: black;
+    color: white;
+}
+#cart-button-no{
+    border-radius: 5em;
+    width: 2em;
+    color:white;
+    background-color: black;
+}
+.title{
+    padding: 3em;
+    text-align: center;
+    background-color: rgb(50, 31, 31);
+    color: white;
+    font-style: normal;
+    height: 15em;
+}
+.title h1{
+    padding-top: 0.5em;
+    font-weight: bold;
+    font-size: 3em;
+}
+.title p{
+    font-size:medium;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.mycontainer{
+    justify-content: center;
+    background-color: white;
+}
+.sub-container{
+    width:18em; 
+    height:24em; 
+    margin:4em;
+    margin-bottom: 5em;
+    text-align: center;
+}
+.mytop{
+    background-color: rgb(213, 210, 210);
+    width: 18em;
+    height: 15em;
+}
+.mybottom{
+    color: black;
+    border-width: 15px;
+    border-color: black;
+}
+.mybottom-text{
+    padding-top: 2em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.mybottom-button{
+    font-size: large;
+    text-align: center;
+    width: 10em;
+    height: 3em;
+    border-radius: 1em;
+    border-width: 0.5;
+}
+.mybottom-button:hover{
+    background-color: black;
+    color: white;
+}
+.sale-tag{
+    background-color: black;
+    color: white;
+    border-radius: 0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin: 0.5em
+}
+.mybottom-text s{
+    padding-right: 0.4em;
+    color: rgb(171, 168, 168);
+}

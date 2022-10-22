@@ -52,7 +52,6 @@ export class AuthComponent {
 
     if (!valid) return;
     this.router.navigate(['home']);
-
   }
 
   signUp(data: any) {

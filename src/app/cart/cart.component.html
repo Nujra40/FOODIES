@@ -1,0 +1,55 @@
+<div class="title">
+  <h1 style="letter-spacing: 10px">FOODIES</h1>
+  <p>Choose. Order. Repeat.</p>
+</div>
+
+<h1 class="m-5">
+  Your Cart <span *ngIf="orders.length == 0">is empty</span>
+</h1>
+
+<div id="allItems" *ngFor="let order of orders">
+  <div class="item">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img [src]="order.filePath" width="200px">
+        </div>
+        <div class="col">
+          Item
+          <h2>{{ order.item }}</h2>
+          <h3>₹{{ order.unit }}</h3>
+        </div>
+        <div class="col">
+          Quantity
+          <br>
+          <button [disabled]="order.qty <= 1" (click)="decQty(order.itemID)" class="btn btn-dark">-</button>
+          <span>&nbsp;&nbsp;{{ order.qty }}&nbsp;&nbsp;</span>
+          <button (click)="incQty(order.itemID)" class="btn btn-dark">+</button>
+        </div>
+        <div class="col">
+          Price
+          <h3>₹{{ order.unit * order.qty }}</h3>
+        </div>
+        <div class="col">
+          <a href="#" (click)="deleteItem(order.itemID)">
+            <h5 class="text-danger">Delete</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="float-start m-5 border border-dark rounded p-5">
+  <h2>Order Summary</h2>
+  <h3 class="text-primary">
+    Items: {{ totItems }}
+  </h3>
+  <br>
+  <h2 class="text-success">
+    Total: ₹{{ totAmount }}
+  </h2>
+  <h5>Payment Method: Cash on Delivery</h5>
+  <button>Order</button>
+</div>
