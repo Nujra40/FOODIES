@@ -3,11 +3,12 @@
   <p>Choose. Order. Repeat.</p>
 </div>
 
+<a routerLink="/home">Home</a>
 <h1 class="m-5">
-  Your Cart <span *ngIf="orders.length == 0">is empty</span>
+  Your Cart <span *ngIf="cartService.cartData.length == 0">is empty</span>
 </h1>
 
-<div id="allItems" *ngFor="let order of orders">
+<div id="allItems" *ngFor="let order of cartService.cartData">
   <div class="item">
     <div class="container">
       <div class="row">
@@ -31,8 +32,8 @@
           <h3>₹{{ order.unit * order.qty }}</h3>
         </div>
         <div class="col">
-          <a href="#" (click)="deleteItem(order.itemID)">
-            <h5 class="text-danger">Delete</h5>
+          <a style="cursor: pointer; font-size: 22px" class="link-danger" (click)="deleteItem(order.itemID)">
+            Delete
           </a>
         </div>
       </div>

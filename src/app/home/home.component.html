@@ -1,25 +1,35 @@
 <div class="title">
-    <h1 style="letter-spacing: 10px">FOODIES</h1>
-    <p>Choose. Order. Repeat.</p>
+    <div><h1>F O O D I E S</h1></div>
+    <div><p>Choose Order Repeat</p></div>
+    <div>
+        <button class="float-end" id="cart-button" routerLink="/cart">
+            Cart <span id="cart-button-no">{{ cartData.length }}</span>
+        </button>
+    </div>
 </div>
 
-<div class="d-flex flex-wrap text-white mycontainer">
-    <div class="border sub-container column">
+<div [hidden]="menu">
+    <h1 class="p-5 m-5">Loading Assets...</h1>
+</div>
+
+<div class="d-flex flex-wrap text-white bg-light mycontainer">
+    <div class="border sub-container column" *ngFor="let item of menu">
         <div class="mytop">
             <div>
-                <div class="sale-tag float-end" style="position: absolute;">Sale</div>
-                <img src="https://dummyimage.com/288x240/dee2e6/6c757d.jpg">
-            </div>
+                <img src="{{ item.filePath }}">
+            </div>   
         </div>
         <div class="mybottom">
             <div class="mybottom-text">
-                <h3>Chicken 65</h3>
-                <p>
-                    <s>$40.00-$80.00</s>
-                    $10.00-$20.00
-                </p>
-                <button class="mybottom-button">Add to cart</button>
+                <h3>{{ item.item }}</h3>
+                <p>₹{{ item.unit }}</p>
+                <button [ngClass]="cartData.includes(item.itemID) ? 'includedItem' : 'mybottom-button'"
+                        [disabled]="cartData.includes(item.itemID)"
+                        (click)="addToCart(item, item.itemID)"
+                        [innerText]="cartData.includes(item.itemID) ? 'Added to Cart' : 'Add to Cart'">
+                </button>
             </div>
         </div>
     </div>
 </div>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartDataService } from '../cart-data.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,27 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   
-  constructor () {}
-
-  orders: any = [
-    {
-      "itemID": 175,
-      "filePath": "assets/images/chicken65.jpg",
-      "item": "Chicken 65",
-      "unit": 124,
-      "qty": 3
-    },
-    {
-      "itemID": 123,
-      "filePath": "assets/images/chicken65.jpg",
-      "item": "Dosa",
-      "unit": 100,
-      "qty": 2
+  constructor (public cartService: CartDataService) {
+    for (let item of cartService.cartData) {
+      if (item['qty'] === undefined) item['qty'] = 1;
     }
-  ];
+  }
 
   decQty(id: number) {
-    for (let order of this.orders) {
+    for (let order of this.cartService.cartData) {
       if (order.itemID == id) {
         order.qty -= 1;
         break;
@@ -36,7 +24,7 @@ export class CartComponent implements OnInit {
   }
 
   incQty(id: number) {
-    for (let order of this.orders) {
+    for (let order of this.cartService.cartData) {
       if (order.itemID == id) {
         order.qty += 1;
         break;
@@ -46,9 +34,9 @@ export class CartComponent implements OnInit {
 
   deleteItem(id: number) {
     let c = 0;
-    for (let order of this.orders) {
+    for (let order of this.cartService.cartData) {
       if (order.itemID == id) {
-        this.orders.splice(c, c+1);
+        this.cartService.cartData.splice(c, c+1);
         break;
       }
       c++;
@@ -57,7 +45,7 @@ export class CartComponent implements OnInit {
 
   get totItems() {
     let x = 0;
-    for (let order of this.orders)
+    for (let order of this.cartService.cartData)
       x += order.qty;
     
     return x;
@@ -65,12 +53,14 @@ export class CartComponent implements OnInit {
 
   get totAmount() {
     let x = 0;
-    for (let order of this.orders)
+    for (let order of this.cartService.cartData)
       x += (order.qty * order.unit);
     return x;
   }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.cartService.cartData);
+  }
 
 }
