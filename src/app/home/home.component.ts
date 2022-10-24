@@ -13,7 +13,10 @@ export class HomeComponent implements OnInit {
   cartData: number[] = [];
   constructor(private menuService: GetMenuService, public cartService: CartDataService) {
     this.menuService.fetch()
-    .subscribe(data => this.menu = data);
+    .subscribe(data => {
+      this.menu = data;
+      console.log(this.menu);
+    });
   }
 
   ngOnInit(): void {

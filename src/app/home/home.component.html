@@ -1,6 +1,6 @@
 <div class="title">
     <div><h1>F O O D I E S</h1></div>
-    <div><p>Choose Order Repeat</p></div>
+    <div><p>Choose. Order. Repeat.</p></div>
     <div>
         <button class="float-end" id="cart-button" routerLink="/cart">
             Cart <span id="cart-button-no">{{ cartData.length }}</span>
@@ -21,8 +21,22 @@
         </div>
         <div class="mybottom">
             <div class="mybottom-text">
-                <h3>{{ item.item }}</h3>
+                <h3>
+                    <img [src]="item.isNonVeg ? 'assets/images/nonveg.jpg' : 'assets/images/veg.jpg'"
+                         width="40px">
+                    {{ item.item }}
+                </h3>
                 <p>₹{{ item.unit }}</p>
+                <div class="rating-star">
+                    <span *ngFor="let i of [0, 1, 2, 3, 4]">
+                        <span [ngClass]="item.rating[i] ? 'fa fa-star checked' : 'fa fa-star'"
+                            style="font-size:larger">
+                        </span>
+                    </span>
+                </div>
+                <div class="m-1">
+                    <h4>Serves {{ item.serves }}</h4>
+                </div>
                 <button [ngClass]="cartData.includes(item.itemID) ? 'includedItem' : 'mybottom-button'"
                         [disabled]="cartData.includes(item.itemID)"
                         (click)="addToCart(item, item.itemID)"
