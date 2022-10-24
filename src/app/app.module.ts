@@ -25,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
     RouterModule.forRoot([
       { path: 'auth', component: AuthComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'cart', component: CartComponent },
+      { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),
     HttpClientModule
   ],

@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
     let c = 0;
     for (let order of this.cartService.cartData) {
       if (order.itemID == id) {
-        this.cartService.cartData.splice(c, c+1);
+        this.cartService.cartData.splice(c, 1);
         break;
       }
       c++;
