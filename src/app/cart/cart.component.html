@@ -1,9 +1,13 @@
 <div class="title">
   <h1 style="letter-spacing: 10px">FOODIES</h1>
   <p>Choose. Order. Repeat.</p>
+  <div>
+    <button class="float-start" id="home-button" routerLink="/home">
+      Home
+    </button>
+  </div>
 </div>
 
-<a routerLink="/home">Home</a>
 <h1 class="m-5">
   Your Cart <span *ngIf="cartService.cartData.length == 0">is empty</span>
 </h1>

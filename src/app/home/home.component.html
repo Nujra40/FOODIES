@@ -1,7 +1,10 @@
 <div class="title">
-    <div><h1>F O O D I E S</h1></div>
+    <div><h1 style="letter-spacing: 10px">FOODIES</h1></div>
     <div><p>Choose. Order. Repeat.</p></div>
     <div>
+        <button class="float-start" id="cart-button" routerLink="/auth">
+            Sign Out
+        </button>
         <button class="float-end" id="cart-button" routerLink="/cart">
             Cart <span id="cart-button-no">{{ cartData.length }}</span>
         </button>

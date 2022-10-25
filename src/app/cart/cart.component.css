@@ -25,3 +25,15 @@
     font-style: italic;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+#home-button{
+    font-size: x-large;
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+}
+#home-button:hover{
+    background-color: black;
+    color: white;
+}
