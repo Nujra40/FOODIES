@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { CartComponent } from './cart/cart.component';
       { path: 'auth', component: AuthComponent },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'pay/:qty/:tot/:paymethod', component: PaymentComponent },
       { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),
     HttpClientModule

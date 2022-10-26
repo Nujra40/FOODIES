@@ -77,7 +77,7 @@ export class AuthComponent {
       this.e_su = 'gray';
     }
 
-    if (!/^[+]91(-|\s)[0-9]{10}$/.test(phno)) {
+    if (!/^[+]91(-|\s|)[0-9]{10}$/.test(phno)) {
       this.ph_su = 'red';
       valid = false;
     } else {

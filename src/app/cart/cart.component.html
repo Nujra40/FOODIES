@@ -2,7 +2,7 @@
   <h1 style="letter-spacing: 10px">FOODIES</h1>
   <p>Choose. Order. Repeat.</p>
   <div>
-    <button class="float-start" id="home-button" routerLink="/home">
+    <button class="float-start but" routerLink="/home">
       Home
     </button>
   </div>
@@ -54,7 +54,6 @@
   <br>
   <h2 class="text-success">
     Total: ₹{{ totAmount }}
-  </h2>
-  <h5>Payment Method: Cash on Delivery</h5>
-  <button>Order</button>
+  </h2><br>
+  <button class="but" [disabled]="cartService.cartData.length == 0" [routerLink]="['/pay', totItems, totAmount, 1]">Proceed to Pay</button>
 </div>

@@ -26,14 +26,17 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-#home-button{
+.but{
     font-size: x-large;
-    border-radius: 1em;
+    border-radius: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
     text-align: center;
 }
-#home-button:hover{
+.but:hover{
     background-color: black;
     color: white;
 }
+

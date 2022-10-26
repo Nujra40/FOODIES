@@ -59,8 +59,6 @@ export class CartComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    console.log(this.cartService.cartData);
-  }
+  ngOnInit() {}
 
 }
