@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthAPIService } from '../auth.api.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,8 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  constructor (private router: Router) {}
+  constructor (private router: Router, private authService: AuthAPIService) {}
 
+  loginFailed = false;
+  signUpFailed = false;
   disableSignIn: boolean = false;
   e_si: string = 'gray';
   pa_si: string = 'gray';
@@ -51,7 +54,10 @@ export class AuthComponent {
     }
 
     if (!valid) return;
-    this.router.navigate(['home']);
+    this.authService.login(email, password).subscribe(data => {
+      if (data['loginStatus']) this.router.navigate(['home']);
+      else this.loginFailed = true;
+    });
   }
 
   signUp(data: any) {
@@ -92,6 +98,9 @@ export class AuthComponent {
     }
 
     if (!valid) return;
-    this.router.navigate(['home']);
+    this.authService.signUp(name, email, phno, password).subscribe(data => {
+      if (data['signUpStatus']) this.router.navigate(['home']);
+      else this.signUpFailed = true;
+    });
   }
 }

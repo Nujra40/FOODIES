@@ -12,6 +12,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PaymentComponent } from './payment/payment.component';
     AuthComponent,
     HomeComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

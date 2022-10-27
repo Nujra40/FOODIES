@@ -1,6 +1,12 @@
 <section class="vh-100">
   <h1 id="heading">FOODIES</h1>
   <p id="tag">Choose. Order. Repeat.</p>
+    <div class="p-4 alert alert-danger" *ngIf="loginFailed">
+      <h3>Invalid Username or Password</h3>
+    </div>
+    <div class="p-4 alert alert-danger" *ngIf="signUpFailed">
+      <h3>Account with this email already Exist, Try to Sign In</h3>
+    </div>
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-xl-10">
