@@ -28,7 +28,7 @@ import { PaymentComponent } from './payment/payment.component';
       { path: 'auth', component: AuthComponent },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'pay/:qty/:tot/:paymethod', component: PaymentComponent },
+      { path: 'pay/:qty/:tot', component: PaymentComponent },
       { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),
     HttpClientModule

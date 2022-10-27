@@ -55,5 +55,5 @@
   <h2 class="text-success">
     Total: ₹{{ totAmount }}
   </h2><br>
-  <button class="but" [disabled]="cartService.cartData.length == 0" [routerLink]="['/pay', totItems, totAmount, 1]">Proceed to Pay</button>
+  <button class="but" [disabled]="cartService.cartData.length == 0" [routerLink]="['/pay', totItems, totAmount]">Proceed to Pay</button>
 </div>

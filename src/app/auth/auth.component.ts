@@ -84,14 +84,7 @@ export class AuthComponent {
       this.ph_su = 'gray';
     }
 
-    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)) {
-      this.pa_su = 'red';
-      valid = false;
-    } else {
-      this.pa_su = 'gray';
-    }
-
-    if (!(cpassword == password)) {
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password) || !(cpassword == password)) {
       this.cp_su = this.pa_su = 'red';
       valid = false;
     } else {

@@ -12,6 +12,7 @@ export class PaymentComponent implements OnInit {
   payLoading = false;
   txtColor = 'black';
   loadTxt = 'Processing Payment.';
+  cardInvalid = false;
   constructor(private _ActivatedRoute: ActivatedRoute, private _Router: Router) { }
 
   qty: number = 0;
@@ -21,50 +22,78 @@ export class PaymentComponent implements OnInit {
     this.tot = Number(this._ActivatedRoute.snapshot.paramMap.get('tot'));
   }
 
-  processPayment(data: any) {
+  isLuhn(n: string) {
+    let s: number = 0;
+    let x: number = 1;
+    let t: number = 0;
+    for (let i = n.length-1; i >= 0; i--) {
+      if (x == 1) s += Number(n[i]);
+      else {
+        t = Number(n[i]) * 2;
+        while (t > 0) {
+          s += (t % 10);
+          t = Math.floor(t/10);
+        }
+      }
+      x *= -1;
+    }
+    if (s % 10 == 0) return true;
+    return false;
+  }
+
+  processPayment(data: any, delAddr: any) {
+    this.err = false;
+    this.cardInvalid = false;
     const name = data['name'];
     const cvv = data['cvv'];
-    const num = data['num'];
     const exp = data['exp'];
+    var num = data['num'];
 
-    if (name && cvv && num && exp) {
-      this.err = false;
-      this.payLoading = true;
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment..';
-      }, 500);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment...';
-      }, 1000);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment';
-      }, 1500);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment.';
-      }, 2000);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment..';
-      }, 2500);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment...';
-      }, 3000);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment';
-      }, 3500);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment.';
-      }, 4000);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment..';
-      }, 4500);
-      setTimeout(() => {
-        this.loadTxt = 'Processing Payment...';
-      }, 5000);
-      setTimeout(() => {
-        this.loadTxt = 'Payment Success... Order Placed!';
-        this.txtColor = 'green';
-      }, 5500);
+    if (!(/[A-Za-z]{3,}/.test(name) && /[0-9]{3}/.test(cvv) && /[0-9\W]{16,}/.test(num) && /[0-9]{2}\/[0-9]{4}/.test(exp) && delAddr)) {
+      this.err = true;
+      return;
     }
-    else this.err = true;
+
+    num = num.replace(' ', '');
+    if (!this.isLuhn(num)) {
+      this.cardInvalid = true;
+      this.err = true;
+      return;
+    }
+    this.payLoading = true;
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment..';
+    }, 500);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment...';
+    }, 1000);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment';
+    }, 1500);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment.';
+    }, 2000);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment..';
+    }, 2500);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment...';
+    }, 3000);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment';
+    }, 3500);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment.';
+    }, 4000);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment..';
+    }, 4500);
+    setTimeout(() => {
+      this.loadTxt = 'Processing Payment...';
+    }, 5000);
+    setTimeout(() => {
+      this.loadTxt = 'Payment Success... Order Placed!';
+      this.txtColor = 'green';
+    }, 5500);
   }
 }

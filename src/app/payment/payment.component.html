@@ -6,6 +6,9 @@
       </button>
 </div>
 
+<div class="p-4 alert alert-danger" *ngIf="cardInvalid">
+    <h3>Card Number is invalid (Failed to pass Luhn Test)</h3>
+</div>
 <div class="container" [style]="payLoading ? 'pointer-events: none;zoom: 150%;' : 'zoom: 150%'" >
     <div class="row m-0">
         <div class="col-lg-7 pb-5 pe-lg-5">
@@ -15,7 +18,7 @@
                 </div>
                 <div class="row m-0 bg-light">
                     <legend>Delivery Address</legend>
-                    <textarea style="font-size: larger; font-weight: bold; padding: 20px;" spellcheck="false" id="address" rows="5"></textarea>
+                    <textarea #delAddr style="font-size: larger; font-weight: bold; padding: 20px;" spellcheck="false" id="address" rows="5"></textarea>
                 </div>
                 <div [style.color]="txtColor" class="row m-0" [hidden]="!payLoading">
                     <h3 class="pt-3">{{ loadTxt }}</h3>
@@ -50,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <form #payForm="ngForm" (ngSubmit)="processPayment(payForm.value)">
+                <form #payForm="ngForm" (ngSubmit)="processPayment(payForm.value, delAddr.value)">
                 <div class="col-12 px-0" style="zoom: 110%;">
                     <div class="row bg-light m-0">
                         <div class="col-12 px-4 my-4">
