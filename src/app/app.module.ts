@@ -31,6 +31,7 @@ import { AdminComponent } from './admin/admin.component';
       { path: 'auth', component: AuthComponent },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'admin', component: AdminComponent }, 
       { path: 'pay/:qty/:tot', component: PaymentComponent },
       { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),

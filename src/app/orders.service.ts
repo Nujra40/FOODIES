@@ -12,4 +12,8 @@ export class OrdersService {
   makeOrder(data: any): Observable<any> {
     return this.http.post(`http://127.0.0.1:8000/API/orders/`, data);
   }
+
+  getOrders(): Observable<any> {
+    return this.http.get(`http://127.0.0.1:8000/API/orders/`);
+  }
 }
