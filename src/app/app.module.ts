@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { GetMenuService } from './get-menu.service';
 import { CartDataService } from './cart-data.service';
+import { OrdersService } from './orders.service';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -35,7 +36,7 @@ import { AdminComponent } from './admin/admin.component';
     ]),
     HttpClientModule
   ],
-  providers: [GetMenuService, CartDataService],
+  providers: [GetMenuService, CartDataService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

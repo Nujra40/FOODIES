@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
         break;
       }
     }
+    this.cartService.pushCart();
   }
 
   incQty(id: number) {
@@ -30,6 +31,7 @@ export class CartComponent implements OnInit {
         break;
       }
     }
+    this.cartService.pushCart();
   }
 
   deleteItem(id: number) {
@@ -41,6 +43,7 @@ export class CartComponent implements OnInit {
       }
       c++;
     }
+    this.cartService.pushCart();
   }
 
   get totItems() {

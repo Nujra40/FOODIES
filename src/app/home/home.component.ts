@@ -10,21 +10,23 @@ import { GetMenuService } from '../get-menu.service';
 export class HomeComponent implements OnInit {
 
   menu: any = false;
-  cartData: number[] = [];
   constructor(private menuService: GetMenuService, public cartService: CartDataService) {
     this.menuService.fetch()
     .subscribe(data => this.menu = data);
   }
 
-  ngOnInit(): void {
-    for (let item of this.cartService.cartData) {
-      this.cartData.push(item.itemID);
-    }
-  }
+  ngOnInit(): void {}
 
-  addToCart(item: any, itemID: number) {
+  addToCart(item: any) {
     this.cartService.cartData.push(item);
-    this.cartData.push(itemID);
+    this.cartService.pushCart();
   }
 
+  get cartDataID() {
+    let x: number[] = [];
+    for (let item of this.cartService.cartData) {
+      x.push(item.itemID)
+    }
+    return x;
+  }
 }

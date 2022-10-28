@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { CartDataService } from '../cart-data.service';
+import { OrdersService } from '../orders.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,9 +13,10 @@ export class PaymentComponent implements OnInit {
   err = false;
   payLoading = false;
   txtColor = 'black';
-  loadTxt = 'Processing Payment.';
+  loadTxt = '';
   cardInvalid = false;
-  constructor(private _ActivatedRoute: ActivatedRoute, private _Router: Router) { }
+  constructor(private _ActivatedRoute: ActivatedRoute,
+    private cartService: CartDataService, private orderService: OrdersService) { }
 
   qty: number = 0;
   tot: number = 0;
@@ -60,40 +63,17 @@ export class PaymentComponent implements OnInit {
       this.err = true;
       return;
     }
+    this.loadTxt = 'Processing... Please Wait';
     this.payLoading = true;
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment..';
-    }, 500);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment...';
-    }, 1000);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment';
-    }, 1500);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment.';
-    }, 2000);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment..';
-    }, 2500);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment...';
-    }, 3000);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment';
-    }, 3500);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment.';
-    }, 4000);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment..';
-    }, 4500);
-    setTimeout(() => {
-      this.loadTxt = 'Processing Payment...';
-    }, 5000);
-    setTimeout(() => {
-      this.loadTxt = 'Payment Success... Order Placed!';
-      this.txtColor = 'green';
-    }, 5500);
+    
+    const time = new Date().getTime();
+    this.orderService.makeOrder({[time]: this.cartService.cartData}).subscribe(data => {
+      if (data['orderPlaced']) {
+        this.cartService.cartData = [];
+        this.cartService.pushCart();
+        this.loadTxt = 'Payment Success... Order Placed!';
+        this.txtColor = 'green';
+      }
+    })
   }
 }

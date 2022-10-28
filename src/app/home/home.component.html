@@ -6,7 +6,7 @@
             Sign Out
         </button>
         <button class="float-end" id="cart-button" routerLink="/cart">
-            Cart <span id="cart-button-no">{{ cartData.length }}</span>
+            Cart <span id="cart-button-no">{{ cartService.cartData.length }}</span>
         </button>
     </div>
 </div>
@@ -40,10 +40,10 @@
                 <div class="m-1">
                     <h4>Serves {{ item.serves }}</h4>
                 </div>
-                <button [ngClass]="cartData.includes(item.itemID) ? 'includedItem' : 'mybottom-button'"
-                        [disabled]="cartData.includes(item.itemID)"
-                        (click)="addToCart(item, item.itemID)"
-                        [innerText]="cartData.includes(item.itemID) ? 'Added to Cart' : 'Add to Cart'">
+                <button [ngClass]="cartDataID.includes(item.itemID) ? 'includedItem' : 'mybottom-button'"
+                        [disabled]="cartDataID.includes(item.itemID)"
+                        (click)="addToCart(item)"
+                        [innerText]="cartDataID.includes(item.itemID) ? 'Added to Cart' : 'Add to Cart'">
                 </button>
             </div>
         </div>
