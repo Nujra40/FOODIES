@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartDataService } from '../cart-data.service';
 import { GetMenuService } from '../get-menu.service';
+import { AuthAPIService } from '../auth.api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { GetMenuService } from '../get-menu.service';
 export class HomeComponent implements OnInit {
 
   menu: any = false;
-  constructor(private menuService: GetMenuService, public cartService: CartDataService) {
+  constructor(private menuService: GetMenuService, public cartService: CartDataService,
+    public _auth: AuthAPIService) {
     this.menuService.fetch()
     .subscribe(data => this.menu = data);
   }

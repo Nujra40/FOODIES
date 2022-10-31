@@ -1,0 +1,32 @@
+.title{
+    padding: 3em;
+    text-align: center;
+    background-color: rgb(50, 31, 31);
+    color: white;
+    font-style: normal;
+    height: 15em;
+}
+.title h1{
+    padding-top: 0.5em;
+    font-weight: bold;
+    font-size: 3em;
+}
+.title p{
+    font-size:medium;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.but{
+    font-size: x-large;
+    border-radius: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    text-align: center;
+}
+.but:hover:enabled{
+    background-color: black;
+    color: white;
+}

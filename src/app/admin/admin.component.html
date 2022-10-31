@@ -1,1 +1,85 @@
-<p>admin works!</p>
+<div class="title">
+    <h1 style="letter-spacing: 10px">FOODIES</h1>
+    <p>Choose. Order. Repeat.</p>
+    <div>
+        <button class="float-start btn btn-danger" (click)="_auth.email = ''" routerLink="/auth">
+            Sign Out
+        </button>
+        <button [ngClass]="content == 'stats' ? 'btn btn-dark': 'btn btn-light'"
+                (click)="content = 'stats'"
+                class="float-start" style="margin-left: 1em;">
+            View Stats
+        </button>
+        <button [ngClass]="content == 'updateMenu' ? 'btn btn-dark': 'btn btn-light'"
+                (click)="content = 'updateMenu'"
+                class="float-start" style="margin-left: 0.3em;">
+            Update Menu
+        </button>
+    </div>
+</div>
+
+<div class="form-outline" style="zoom: 150%;" *ngIf="content == 'updateMenu'">
+    <div class="alert alert-warning">
+        Incorrect Modification of this file can cause failure of the application<br>
+        <span style="font-family: consolas;">Showing contents of menu.json</span>
+    </div>
+    <button class="ms-5 me-2 mt-2 mb-2 btn btn-success"
+            (click)="pushMenu(menuArea.value)">Commit</button>
+    <button class="m-2 btn btn-info"
+            (click)="menuArea.disabled = true;menuArea.style.background = 'rgb(44,44,44)'">Freeze</button>
+    <button class="m-2 btn btn-danger"
+            (click)="content = 'stats'">Abort</button>
+    <textarea #menuArea spellcheck="false" class="form-control mt-3 mb-5 ms-5 me-5 w-75"
+              style="font-family: consolas; background: black; color: lightgreen;"
+              rows="30">{{ menu | json }}</textarea>
+</div>
+
+<div *ngIf="content == 'stats'" class="container" style="zoom: 140%;">
+    <div class="row m-5">
+        <div class="col-2">
+            <button [ngClass]="view == 1 ? 'btn btn-primary p-2 m-1' : 'btn btn-secondary p-2 m-1'"
+                    (click)="view = 1">View Sales by Quantity</button>
+            <button [ngClass]="view == 2 ? 'btn btn-primary p-2 m-1' : 'btn btn-secondary p-2 m-1'"
+                    (click)="view = 2" >View Sales by Revenue</button>
+            <button [ngClass]="view == 3 ? 'btn btn-primary p-2 m-1' : 'btn btn-secondary p-2 m-1'"
+                    (click)="view = 3" >View Veg/Non-Veg Split</button>
+        </div>
+        <div class="col-10">
+            <canvas [hidden]="view != 1" baseChart
+                    [data]="barChartData1"
+                    [legend]="true"
+                    [type]="'bar'">
+            </canvas>
+
+            <canvas [hidden]="view != 2" baseChart
+                [data]="barChartData2"
+                [legend]="true"
+                [type]="'bar'">
+            </canvas>
+
+            <div [hidden]="view != 3" class="container">
+                <div class="row">
+                    <div class="col">
+                        <canvas baseChart
+                            [type]="'pie'"
+                            [data]="pieChart1"
+                            [options]="pieChartOptions"
+                            [legend]="true">
+                        </canvas>
+                    </div>
+                    <div class="col">
+                        <canvas baseChart
+                            [type]="'doughnut'"
+                            [data]="doughnutChart1"
+                            [options]="doughnutOptions"
+                            [legend]="true">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+

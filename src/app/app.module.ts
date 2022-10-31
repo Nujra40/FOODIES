@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 import { GetMenuService } from './get-menu.service';
 import { CartDataService } from './cart-data.service';
@@ -35,7 +36,8 @@ import { AdminComponent } from './admin/admin.component';
       { path: 'pay/:qty/:tot', component: PaymentComponent },
       { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [GetMenuService, CartDataService, OrdersService],
   bootstrap: [AppComponent]

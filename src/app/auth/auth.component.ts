@@ -37,7 +37,7 @@ export class AuthComponent {
     const email = data['email-signin'];
     const password = data['password-signin'];
 
-    if (email == 'admin' && password == 'password') {
+    if (email == 'admin' && password == '5TimesDollar$$$$$') {
       this.authService.email = 'email';
       this.router.navigate(['admin']);
     }
