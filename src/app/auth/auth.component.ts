@@ -25,12 +25,10 @@ export class AuthComponent {
 
   showSignIn() {
     this.disableSignIn = false;
-    console.log('Sign In');
   }
 
   showSignUp() {
     this.disableSignIn = true;
-    console.log('Sign Up');
   }
 
   signIn(data: any) {

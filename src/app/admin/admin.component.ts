@@ -4,22 +4,7 @@ import { GetMenuService } from '../get-menu.service';
 import { OrdersService } from '../orders.service';
 import { AuthAPIService } from '../auth.api.service';
 import { CartDataService } from '../cart-data.service';
-import { Chart, ChartConfiguration } from 'chart.js';
-
-// interface order {
-//   itemID: number,
-//   filePath: string,
-//   item: string,
-//   unit: number,
-//   isNonveg: boolean,
-//   ratting: number[],
-//   serves: number,
-//   qty: number
-// }
-
-// interface orderJSON {
-//   orderID: order[]
-// }
+import { ChartConfiguration } from 'chart.js';
 
 interface purSpl {
   [_: string]: number[],
