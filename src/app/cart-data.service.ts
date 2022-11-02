@@ -12,7 +12,10 @@ export class CartDataService {
 
   cartData: any[] = [];
   constructor(private http: HttpClient, private _auth: AuthAPIService, private _Router: Router) {
-    if (!this._auth.email) this._Router.navigate(['auth'])
+    if (!this._auth.email) {
+      this._Router.navigate(['auth']);
+      return;
+    }
     const obs: Observable<any> =  this.http.get(`http://127.0.0.1:8000/API/getCart/${this._auth.email}/`);
     obs.subscribe(data => {
       this.cartData = data['cartData'];

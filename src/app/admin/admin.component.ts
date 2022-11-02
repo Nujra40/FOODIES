@@ -87,7 +87,6 @@ export class AdminComponent implements OnInit {
     for (var orderID in this.allOrders) {
       for (let item of this.allOrders[orderID]) {
         if (item.isNonVeg) {
-          console.log()
           this.data3[1] += item.qty;
           this.data4[1] += (item.unit * item.qty);
         } else {
@@ -98,10 +97,6 @@ export class AdminComponent implements OnInit {
         this.purchaseSplit[item.item][1] += (item.unit * item.qty);
       }
     }
-
-    console.log(this.data3);
-    console.log(this.data4);
-
 
     for (let name in this.purchaseSplit) {
       this.menuLabels.push(name);

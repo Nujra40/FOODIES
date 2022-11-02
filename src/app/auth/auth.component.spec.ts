@@ -58,4 +58,13 @@ describe('AuthComponent', () => {
     component.showSignUp();
     expect(component.disableSignIn).toBeTrue();
   });
+
+  it('should validate login data', () => {
+    expect(component.signIn({})).toBeUndefined();
+  });
+
+  it('should validate signUp data', () => {
+    expect(component.signUp({})).toBeUndefined();
+  });
+
 });

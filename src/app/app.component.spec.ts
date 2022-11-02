@@ -1,17 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing'
-
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { NgChartsModule } from 'ng2-charts';
-
-import { GetMenuService } from './get-menu.service';
-import { CartDataService } from './cart-data.service';
-import { OrdersService } from './orders.service';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
@@ -29,7 +18,8 @@ describe('AppComponent', () => {
         CartComponent,
         PaymentComponent,
         AdminComponent
-      ]
+      ],
+      imports: [ RouterModule ]
     }).compileComponents();
   });
 
