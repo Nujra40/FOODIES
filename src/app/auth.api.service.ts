@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthAPIService {
 
   loginStatus: any = '';
-  email: string = '';
+  email: string = 'asd';
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {

@@ -3,7 +3,7 @@
     <p>Choose. Order. Repeat.</p>
     <button class="float-start but" routerLink="/home">
         Home
-      </button>
+    </button>
 </div>
 
 <div class="p-4 alert alert-danger" *ngIf="cardInvalid">
@@ -19,6 +19,12 @@
                 <div class="row m-0 bg-light">
                     <legend>Delivery Address</legend>
                     <textarea #delAddr style="font-size: larger; font-weight: bold; padding: 20px;" spellcheck="false" id="address" rows="5"></textarea>
+                </div>
+                <h3><br><b>Import Information, from Instagram!</b></h3>
+                <div>
+                    <a href="https://api.instagram.com/oauth/authorize?client_id=353197840387686&redirect_uri=http://localhost:4100/pay/{{ qty }}/{{ tot }}/&scope=user_profile,user_media&response_type=code">
+                        <img style="width:250px" src="assets/images/instagram.png" alt="Instagram">
+                    </a>
                 </div>
                 <div [style.color]="txtColor" class="row m-0" [hidden]="!payLoading">
                     <h3 class="pt-3">{{ loadTxt }}</h3>

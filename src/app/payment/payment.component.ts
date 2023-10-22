@@ -44,6 +44,10 @@ export class PaymentComponent implements OnInit {
     return false;
   }
 
+  connectInstagram() {
+    
+  }
+
   processPayment(data: any, delAddr: any) {
     this.err = false;
     this.cardInvalid = false;
