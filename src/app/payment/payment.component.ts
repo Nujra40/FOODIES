@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartDataService } from '../cart-data.service';
 import { OrdersService } from '../orders.service';
+import { AuthAPIService } from '../auth.api.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,13 +17,21 @@ export class PaymentComponent implements OnInit {
   loadTxt = '';
   cardInvalid = false;
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private cartService: CartDataService, private orderService: OrdersService) { }
+    public cartService: CartDataService, private orderService: OrdersService, private _auth: AuthAPIService) { }
 
   qty: number = 0;
   tot: number = 0;
+  code: string | null = "";
+  public instagramData: any = null;
   ngOnInit(): void {
-    this.qty = Number(this._ActivatedRoute.snapshot.paramMap.get('qty'));
-    this.tot = Number(this._ActivatedRoute.snapshot.paramMap.get('tot'));
+    this.cartService.getInvoice();
+    this.code = this._ActivatedRoute.snapshot.queryParamMap.get('code');
+    if (this.code != null) {
+      this._auth.getInformationFromInstagram(this.code).subscribe(data => {
+        this.instagramData = data;
+        console.log(data);
+      });
+    }
   }
 
   isLuhn(n: string) {
@@ -42,10 +51,6 @@ export class PaymentComponent implements OnInit {
     }
     if (s % 10 == 0) return true;
     return false;
-  }
-
-  connectInstagram() {
-    
   }
 
   processPayment(data: any, delAddr: any) {

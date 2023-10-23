@@ -33,7 +33,7 @@ import { AdminComponent } from './admin/admin.component';
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
       { path: 'admin', component: AdminComponent }, 
-      { path: 'pay/:qty/:tot', component: PaymentComponent },
+      { path: 'pay', component: PaymentComponent },
       { path: '**', redirectTo: '/auth', pathMatch: 'full'}
     ]),
     HttpClientModule,

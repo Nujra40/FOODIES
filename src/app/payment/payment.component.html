@@ -21,8 +21,8 @@
                     <textarea #delAddr style="font-size: larger; font-weight: bold; padding: 20px;" spellcheck="false" id="address" rows="5"></textarea>
                 </div>
                 <h3><br><b>Import Information, from Instagram!</b></h3>
-                <div>
-                    <a href="https://api.instagram.com/oauth/authorize?client_id=353197840387686&redirect_uri=http://localhost:4100/pay/{{ qty }}/{{ tot }}/&scope=user_profile,user_media&response_type=code">
+                <div class="btn-primary">
+                    <a href="https://api.instagram.com/oauth/authorize?client_id=353197840387686&redirect_uri=https://localhost:4200/pay/&scope=user_profile,user_media&response_type=code">
                         <img style="width:250px" src="assets/images/instagram.png" alt="Instagram">
                     </a>
                 </div>
@@ -38,11 +38,11 @@
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">Qty</p>
-                        <p class="fs-14 fw-bold">{{ qty }}</p>
+                        <p class="fs-14 fw-bold">{{ this.cartService.totItems }}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">Subtotal</p>
-                        <p class="fs-14 fw-bold"><span class="fas fa-dollar-sign pe-1"></span>₹{{ tot }}</p>
+                        <p class="fs-14 fw-bold"><span class="fas fa-dollar-sign pe-1"></span>₹{{ this.cartService.totAmount }}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">Shipping</p>
@@ -50,12 +50,12 @@
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">GST @ 9%</p>
-                        <p class="fs-14 fw-bold">₹{{ (tot * 0.09) | number:'1.0-2'}}</p>
+                        <p class="fs-14 fw-bold">₹{{ (this.cartService.totAmount * 0.09) | number:'1.0-2'}}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <p class="textmuted fw-bold">Total</p>
                         <div class="d-flex align-text-top ">
-                            <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4">₹{{ 30 + tot + (tot * 0.09) | number:'1.0-0' }}</span>
+                            <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4">₹{{ 30 + this.cartService.totAmount + (this.cartService.totAmount * 0.09) | number:'1.0-0' }}</span>
                         </div>
                     </div>
                 </div>
@@ -97,6 +97,26 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 *ngIf="instagramData != null" class="alert alert-success m-2 p-4" >
+    Instagram Account Connected Successfully!
+</h2>
+
+<div *ngIf="instagramData != null">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <div *ngFor="let post of instagramData.data" style="width: 400px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); overflow: hidden;">
+            <div [style.height]="'400px'" [style.background]="'url(' + post.media_url + ') no-repeat center center / cover'"></div>
+            <div style="padding: 10px;">
+                <p><b>ID:</b> {{ post.id }}</p>
+                <p><b>Caption:</b> {{ post.caption }}</p>
+                <p><b>Media Type:</b> {{ post.media_type }}</p>
+                <p><b>Timestamp:</b> {{ post.timestamp }}</p>
+                <p><b>Username:</b> {{ post.username }}</p>
+                <a [href]="post.permalink" target="_blank" style="text-decoration: none; color: #333; font-weight: bold;">View on Instagram</a>
             </div>
         </div>
     </div>

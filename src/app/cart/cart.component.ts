@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartDataService } from '../cart-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +9,7 @@ import { CartDataService } from '../cart-data.service';
 })
 export class CartComponent implements OnInit {
   
-  constructor (public cartService: CartDataService) {
+  constructor (public cartService: CartDataService, private router: Router) {
     for (let item of cartService.cartData) {
       if (item['qty'] === undefined) item['qty'] = 1;
     }
@@ -59,6 +60,11 @@ export class CartComponent implements OnInit {
     for (let order of this.cartService.cartData)
       x += (order.qty * order.unit);
     return x;
+  }
+
+  proceedToPay(totItems: number, totAmount: number) {
+    this.cartService.pushInvoice(totItems, totAmount);
+    this.router.navigate(['/pay']);
   }
 
 

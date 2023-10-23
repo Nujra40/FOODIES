@@ -11,8 +11,7 @@ import { AuthAPIService } from '../auth.api.service';
 export class HomeComponent implements OnInit {
 
   menu: any = false;
-  constructor(private menuService: GetMenuService, public cartService: CartDataService,
-    public _auth: AuthAPIService) {
+  constructor(private menuService: GetMenuService, public cartService: CartDataService) {
     this.menuService.fetch()
     .subscribe(data => this.menu = data);
   }

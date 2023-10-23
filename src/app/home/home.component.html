@@ -5,7 +5,7 @@
         <button class="float-start" id="cart-button" routerLink="/auth">
             Sign Out
         </button>
-        <button class="float-end" id="cart-button" (click)="_auth.email = ''" routerLink="/cart">
+        <button class="float-end" id="cart-button" routerLink="/cart">
             Cart <span id="cart-button-no">{{ cartService.cartData.length }}</span>
         </button>
     </div>

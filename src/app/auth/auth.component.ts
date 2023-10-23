@@ -59,6 +59,7 @@ export class AuthComponent {
     if (!valid) return;
     this.authService.login(email, password).subscribe(data => {
       if (data['loginStatus']) {
+        console.log("asdasd" + email);
         this.authService.email = email;
         this.router.navigate(['home']);
       }
